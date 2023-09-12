@@ -17,18 +17,18 @@ app = func.AsgiFunctionApp(app=fastapi_app, http_auth_level=func.AuthLevel.ANONY
 @app.post('/send_recommendations')
 async def send_data(recommendations: List[RecommendationModel]):
     
-    # response_data = []
+    response_data = []
 
-    # for rec in recommendations:
-    #     text_to_print = rec.text
-    #     text_type =rec.type
+    for rec in recommendations:
+        text_to_print = rec.text
+        text_type =rec.type
 
-    #     if text_type == "person":
-    #         recommendation = f"test passed!"
-    #     else:
-    #         recommendation = f"test also passed, but not a person"
+        if text_type == "person":
+            recommendation = f"test passed!"
+        else:
+            recommendation = f"test also passed, but not a person"
 
-    #     response_data.append({"text": text_to_print, "recommendation": recommendation})
+        response_data.append({"text": text_to_print, "recommendation": recommendation})
 
-    # return {"status": 200, "recommendations": response_data}
-    return print("test passed!")
+    return {"status": 200, "recommendations": response_data}
+    # return print("test passed!")
